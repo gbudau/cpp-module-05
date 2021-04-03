@@ -20,7 +20,9 @@ Bureaucrat::Bureaucrat(Bureaucrat const & src) : _name(src._name) {
 }
 
 Bureaucrat &	Bureaucrat::operator=(Bureaucrat const & rhs) {
-	if (this != &rhs) {;}
+	if (this != &rhs) {
+		_grade = rhs._grade;
+	}
 	return *this;
 }
 
