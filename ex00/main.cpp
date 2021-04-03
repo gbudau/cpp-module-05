@@ -23,7 +23,7 @@ void	test_bureaucrat(std::string const & name, int grade) {
 		std::cout << bureaucrat;
 	}
 	catch (const std::exception & exception) {
-		std::cerr << "##### An error occurred #####\n" <<
+		std::cout << "##### An exception occurred #####\n" <<
 			exception.what();
 	}
 }
