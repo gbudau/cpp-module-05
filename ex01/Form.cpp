@@ -13,19 +13,11 @@ Form::Form(std::string const & name, int sign_grade, int execute_grade)
 	}
 }
 
-Form::Form(Form const & src)
-	: _sign_grade(src._sign_grade), _execute_grade(src._execute_grade) {
-	*this = src;
+Form::Form(Form const & src) : _name(src._name), _is_signed(src._is_signed),
+	_sign_grade(src._sign_grade), _execute_grade(src._execute_grade) {
 }
 
 Form::~Form() {
-}
-
-Form &		Form::operator=(Form const & rhs) {
-	if (this != &rhs) {
-		_is_signed = rhs._is_signed;
-	}
-	return *this;
 }
 
 std::string	Form::getName() const {
