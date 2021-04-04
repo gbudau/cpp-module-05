@@ -17,7 +17,6 @@ class Form {
 							int sign_grade, int execute_grade);
 					Form(Form const & src);
 	virtual			~Form();
-	Form &	operator=(Form const & rhs);
 	std::string		getName() const;
 	bool			getIsSigned() const;
 	int				getSignGrade() const;
@@ -28,6 +27,7 @@ class Form {
 
 
  private:
+	Form &	operator=(Form const & rhs);
 	const std::string	_name;
 	bool				_is_signed;
 	const int			_sign_grade;

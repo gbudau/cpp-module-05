@@ -77,6 +77,6 @@ int	main() {
 	test_form("0356H", 75, 75);
 	test_form("0356H", 1, 150);
 
-	test_bureaucrat_and_form("Bob", 150, "0356H", 75,75);
+	test_bureaucrat_and_form("Bob", 150, "0356H", 75, 75);
 	test_bureaucrat_and_form("Jim", 1, "0356H", 1, 150);
 }

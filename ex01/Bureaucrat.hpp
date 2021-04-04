@@ -16,7 +16,6 @@ class Bureaucrat {
 					Bureaucrat(std::string const & name, int grade);
 					Bureaucrat(Bureaucrat const & src);
 	virtual			~Bureaucrat();
-	Bureaucrat &	operator=(Bureaucrat const & rhs);
 	std::string		getName() const;
 	int				getGrade() const;
 	void			incrementGrade();
@@ -27,6 +26,7 @@ class Bureaucrat {
 
 
  private:
+	Bureaucrat &	operator=(Bureaucrat const & rhs);
 	const std::string	_name;
 	int					_grade;
 	static const int	_max_grade;
