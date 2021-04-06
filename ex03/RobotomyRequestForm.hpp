@@ -21,7 +21,6 @@ class RobotomyRequestForm : public Form {
  private:
 	RobotomyRequestForm();
 	RobotomyRequestForm &	operator=(RobotomyRequestForm const & rhs);
-	std::string					_target;
 };
 
 #endif  // ROBOTOMYREQUESTFORM_HPP_

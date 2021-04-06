@@ -20,7 +20,6 @@ class ShrubberyCreationForm : public Form {
  private:
 	ShrubberyCreationForm();
 	ShrubberyCreationForm &	operator=(ShrubberyCreationForm const & rhs);
-	std::string					_target;
 	static const std::string	_ascii_tree;
 };
 
