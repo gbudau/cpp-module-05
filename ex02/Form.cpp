@@ -3,9 +3,10 @@
 const int	Form::_max_grade = 1;
 const int	Form::_min_grade = 150;
 
-Form::Form(std::string const & name, int sign_grade, int execute_grade)
+Form::Form(std::string const & name, int sign_grade,
+		int execute_grade, std::string const & target)
 	: _name(name), _is_signed(false), _sign_grade(sign_grade),
-	_execute_grade(execute_grade) {
+	_execute_grade(execute_grade), _target(target) {
 	if (_sign_grade < _max_grade || _execute_grade < _max_grade) {
 		throw GradeTooHighException("Grade too high. The highest grade is 1\n");
 	} else if (_sign_grade > _min_grade || _execute_grade > _min_grade) {
@@ -34,6 +35,10 @@ int			Form::getSignGrade() const {
 
 int			Form::getExecuteGrade() const {
 	return _execute_grade;
+}
+
+std::string	Form::getTarget() const {
+	return _target;
 }
 
 void		Form::beSigned(Bureaucrat const & bureaucrat) {

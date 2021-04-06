@@ -12,14 +12,15 @@ class Bureaucrat;
 
 class Form {
  public:
-					Form(std::string const & name,
-							int sign_grade, int execute_grade);
+					Form(std::string const & name, int sign_grade,
+						int execute_grade, std::string const & target);
 					Form(Form const & src);
 	virtual			~Form();
 	std::string		getName() const;
 	bool			getIsSigned() const;
 	int				getSignGrade() const;
 	int				getExecuteGrade() const;
+	std::string		getTarget() const;
 	void			beSigned(Bureaucrat const & bureaucrat);
 	class			GradeTooHighException;
 	class			GradeTooLowException;
@@ -37,6 +38,7 @@ class Form {
 	bool				_is_signed;
 	const int			_sign_grade;
 	const int			_execute_grade;
+	const std::string	_target;
 	static const int	_max_grade;
 	static const int	_min_grade;
 };
