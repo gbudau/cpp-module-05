@@ -23,7 +23,14 @@ class Intern {
 											std::string const & target) const;
 	Form*				_makePresidentialPardonForm(
 											std::string const & target) const;
-	static const int	_forms_n;
+	struct				_createFormType;
+};
+
+struct Intern::_createFormType {
+	typedef Form* (Intern::*ptr2Member)(std::string const &) const;
+
+	std::string const	form_name;
+	ptr2Member	const	function_ptr;
 };
 
 #endif  // INTERN_HPP_

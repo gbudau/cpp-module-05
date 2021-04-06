@@ -1,7 +1,5 @@
 #include "Intern.hpp"
 
-const int	Intern::_forms_n = 3;
-
 Intern::Intern() {
 }
 
@@ -19,18 +17,17 @@ Intern &	Intern::operator=(Intern const & rhs) {
 
 Form*		Intern::makeForm(std::string const & name,
 											std::string const & target) const {
-	std::string const	form_names[_forms_n] =
-			{"shrubbery creation",
-				"robotomy request",
-				"presidential pardon"};
-	Form*	(Intern::*const function_ptr[_forms_n])(std::string const &) const =
-	{&Intern::_makeShrubberyCreationForm,
-		&Intern::_makeRobotomyRequestForm,
-		&Intern::_makePresidentialPardonForm};
+	const _createFormType	createFormTypeList[] = {
+		{"shrubbery creation", &Intern::_makeShrubberyCreationForm},
+		{"robotomy request", &Intern::_makeRobotomyRequestForm},
+		{"presidential pardon", &Intern::_makePresidentialPardonForm}};
 
-	for (int i = 0; i < _forms_n; i++) {
-		if (name == form_names[i]) {
-			Form*	new_form = (*this.*function_ptr[i])(target);
+	const int	forms_n = sizeof(createFormTypeList) / sizeof(_createFormType);
+
+	for (int i = 0; i < forms_n; i++) {
+		if (name == createFormTypeList[i].form_name) {
+			Form*	new_form =
+							(*this.*createFormTypeList[i].function_ptr)(target);
 			std::cout << "Intern creates " << new_form->getName() << "\n";
 			return new_form;
 		}
