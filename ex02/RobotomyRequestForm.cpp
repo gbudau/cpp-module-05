@@ -1,7 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const & target)
-	: Form("RobotomyRequestForm", 72, 45), _target(target) {
+	: Form("RobotomyRequestForm", 72, 45, target) {
 	static bool	seeded = false;
 
 	if (!seeded) {
@@ -11,8 +11,11 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const & target)
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src)
-	: Form(src.getName(), src.getSignGrade(), src.getExecuteGrade()),
-	_target(src._target) {
+	: Form(src.getName(),
+			src.getSignGrade(),
+			src.getExecuteGrade(),
+			src.getTarget()) {
+
 	static bool	seeded = false;
 
 	if (!seeded) {
@@ -32,8 +35,8 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 void	RobotomyRequestForm::executeAction() const {
 	std::cout << "* Trrrrr Rrrrrr Trrrrr *\n";
 	if (rand() % 2) {
-		std::cout << _target << " has been robotomized successfully\n";
+		std::cout << getTarget() << " has been robotomized successfully\n";
 	} else {
-		std::cout << _target << " robotomization attempt was a failure\n";
+		std::cout << getTarget() << " robotomization attempt was a failure\n";
 	}
 }
