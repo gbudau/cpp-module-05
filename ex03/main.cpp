@@ -192,5 +192,5 @@ int	main() {
 	test_intern("shrubbery creation", "Bender");
 	test_intern("robotomy request", "Bender");
 	test_intern("presidential pardon", "Bender");
-	test_intern("HTML", "Bender");
+	test_intern("HTML form", "Bender");
 }
