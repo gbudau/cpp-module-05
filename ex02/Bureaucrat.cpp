@@ -45,13 +45,13 @@ void			Bureaucrat::decrementGrade() {
 	}
 }
 
-void			Bureaucrat::signForm(Form* form) const {
+void			Bureaucrat::signForm(Form & form) const {
 	try {
-		form->beSigned(*this);
-		std::cout << getName() << " signs form " << form->getName() << "\n";
+		form.beSigned(*this);
+		std::cout << getName() << " signs form " << form.getName() << "\n";
 	}
 	catch (const std::exception & exception) {
-		std::cout << getName() << " cannot sign form " << form->getName() <<
+		std::cout << getName() << " cannot sign form " << form.getName() <<
 			" because it doesn't have the required grade\n";
 	}
 }

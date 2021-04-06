@@ -86,7 +86,7 @@ void	test_bureaucrat_and_shrubbery_form(std::string const & bureaucrat_name,
 		ShrubberyCreationForm	shrubbery_form(target);
 
 		std::cout << signer << executor << shrubbery_form;
-		signer.signForm(&shrubbery_form);
+		signer.signForm(shrubbery_form);
 		std::cout << shrubbery_form;
 		shrubbery_form.beSigned(signer);
 		shrubbery_form.execute(executor);
@@ -109,7 +109,7 @@ void	test_bureaucrat_and_robotomy_form(std::string const & bureaucrat_name,
 		RobotomyRequestForm	robotomy_form(target);
 
 		std::cout << signer << executor << robotomy_form;
-		signer.signForm(&robotomy_form);
+		signer.signForm(robotomy_form);
 		std::cout << robotomy_form;
 		robotomy_form.beSigned(signer);
 		robotomy_form.execute(executor);
@@ -132,7 +132,7 @@ void	test_bureaucrat_and_presidential_form(std::string const & bureaucrat_name,
 		PresidentialPardonForm	presidential_form(target);
 
 		std::cout << signer << executor << presidential_form;
-		signer.signForm(&presidential_form);
+		signer.signForm(presidential_form);
 		std::cout << presidential_form;
 		presidential_form.beSigned(signer);
 		presidential_form.execute(executor);
