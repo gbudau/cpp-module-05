@@ -3,13 +3,13 @@
 const int	Bureaucrat::_max_grade = 1;
 const int	Bureaucrat::_min_grade = 150;
 
-Bureaucrat::Bureaucrat(std::string const & name, int grade) : _name(name) {
+Bureaucrat::Bureaucrat(std::string const & name, int grade)
+	: _name(name), _grade(grade) {
 	if (grade < _max_grade) {
 		throw GradeTooHighException("Grade too high. The highest grade is 1\n");
 	} else if (grade > _min_grade) {
 		throw GradeTooLowException("Grade too low. The lowest grade is 150\n");
 	}
-	_grade = grade;
 }
 
 Bureaucrat::~Bureaucrat() {
