@@ -53,7 +53,7 @@ void	test_bureaucrat_and_form(std::string const & bureaucrat_name,
 		Form form(form_name, form_sign_grade, form_execute_grade);
 
 		std::cout << bureaucrat << form;
-		bureaucrat.signForm(&form);
+		bureaucrat.signForm(form);
 		std::cout << form;
 		form.beSigned(bureaucrat);
 	}
