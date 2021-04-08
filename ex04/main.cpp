@@ -168,9 +168,12 @@ void	test_intern(std::string const & form_name, std::string const & target) {
 void	test_officeblock_no_param(std::string const & form_name,
 									std::string const & target_name) {
 	std::cout << "\n##### Testing OfficeBlock #####\n";
-	OfficeBlock ob;
-
 	try {
+		OfficeBlock ob;
+
+		ob.setIntern(new Intern());
+		ob.setSigningBureaucrat(new Bureaucrat("Alice", 1));
+		ob.setExecutingBureaucrat(new Bureaucrat("Bob", 1));
 		ob.doBureaucracy(form_name, target_name);
 	}
 	catch (const std::exception & exception) {

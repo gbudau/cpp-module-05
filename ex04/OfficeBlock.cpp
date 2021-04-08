@@ -1,9 +1,9 @@
 #include "OfficeBlock.hpp"
 
 OfficeBlock::OfficeBlock()
-	: _intern(new Intern()),
-	_signing_bureaucrat(new Bureaucrat("Signer", 1)),
-	_executing_bureaucrat(new Bureaucrat("Executor", 1)) {
+	: _intern(0),
+	_signing_bureaucrat(0),
+	_executing_bureaucrat(0) {
 }
 
 OfficeBlock::OfficeBlock(Intern* intern,
@@ -19,7 +19,9 @@ void	OfficeBlock::doBureaucracy(std::string const & form_name,
 	if (_intern && _signing_bureaucrat && _executing_bureaucrat) {
 		Form*	new_form = _intern->makeForm(form_name, target_name);
 		if (new_form) {
+			std::cout << *_signing_bureaucrat << *new_form;
 			_signing_bureaucrat->signForm(*new_form);
+			std::cout << *_executing_bureaucrat << *new_form;
 			_executing_bureaucrat->executeForm(*new_form);
 			delete new_form;
 		} else {
