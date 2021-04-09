@@ -13,7 +13,7 @@ class OfficeBlock {
 										Bureaucrat const & executing_bureaucrat);
 	virtual ~OfficeBlock();
 	void	doBureaucracy(std::string const & form_name,
-											std::string const & target_name);
+										std::string const & target_name) const;
 	void		setIntern(Intern const & intern);
 	void		setSigner(Bureaucrat const & signing_bureaucrat);
 	void		setExecutor(Bureaucrat const & executing_bureaucrat);

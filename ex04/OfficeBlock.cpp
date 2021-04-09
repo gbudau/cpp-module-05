@@ -15,7 +15,7 @@ OfficeBlock::OfficeBlock(Intern const & intern,
 }
 
 void	OfficeBlock::doBureaucracy(std::string const & form_name,
-											std::string const & target_name) {
+										std::string const & target_name) const {
 	if (_intern && _signing_bureaucrat && _executing_bureaucrat) {
 		Form*	new_form = _intern->makeForm(form_name, target_name);
 		if (new_form) {
