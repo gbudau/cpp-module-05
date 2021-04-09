@@ -232,17 +232,14 @@ int	main() {
 		ob.setSigner(bob);
 		ob.setExecutor(hermes);
 
-		try
-		{
+		try {
 			ob.doBureaucracy("mutant pig termination", "Pigley");
 		}
-		catch (const Form::NotSignedException & exception)
-		{
+		catch (const Form::NotSignedException & exception) {
 			std::cout << "##### An exception occurred #####\n" <<
 				exception.what();
 		}
-		catch (const std::exception & exception)
-		{
+		catch (const std::exception & exception) {
 			std::cout << "##### An exception occurred #####\n" <<
 				exception.what();
 		}
