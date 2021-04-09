@@ -6,6 +6,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "MutantPigTermination.hpp"
 
 class Intern {
  public:
@@ -22,6 +23,8 @@ class Intern {
 	Form*				_makeRobotomyRequestForm(
 											std::string const & target) const;
 	Form*				_makePresidentialPardonForm(
+											std::string const & target) const;
+	Form*				_makeMutantPigTerminationForm(
 											std::string const & target) const;
 	struct				_createFormType;
 };

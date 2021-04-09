@@ -1,7 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const & target)
-	: Form("RobotomyRequestForm", 72, 45, target) {
+	: Form("Robotomy Request Form", 72, 45, target) {
 	static bool	seeded = false;
 
 	if (!seeded) {

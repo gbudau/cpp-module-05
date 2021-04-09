@@ -6,6 +6,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "MutantPigTermination.hpp"
 #include "Intern.hpp"
 #include "OfficeBlock.hpp"
 
@@ -77,8 +78,8 @@ void	test_presidential_form(std::string const & target) {
 }
 
 void	test_bureaucrat_and_shrubbery_form(std::string const & bureaucrat_name,
-								int bureaucrat_grade,
-								std::string const & target) {
+		int bureaucrat_grade,
+		std::string const & target) {
 	try {
 		std::cout << "\n##### Testing bureaucrat " << bureaucrat_name <<
 			" with ShrubberyCreationForm on " <<
@@ -101,8 +102,8 @@ void	test_bureaucrat_and_shrubbery_form(std::string const & bureaucrat_name,
 }
 
 void	test_bureaucrat_and_robotomy_form(std::string const & bureaucrat_name,
-								int bureaucrat_grade,
-								std::string const & target) {
+		int bureaucrat_grade,
+		std::string const & target) {
 	try {
 		std::cout << "\n##### Testing bureaucrat " << bureaucrat_name <<
 			" with RobotomyRequestForm on " << target << " #####\n";
@@ -124,8 +125,8 @@ void	test_bureaucrat_and_robotomy_form(std::string const & bureaucrat_name,
 }
 
 void	test_bureaucrat_and_presidential_form(std::string const & bureaucrat_name,
-								int bureaucrat_grade,
-								std::string const & target) {
+		int bureaucrat_grade,
+		std::string const & target) {
 	try {
 		std::cout << "\n##### Testing bureaucrat " << bureaucrat_name <<
 			" with PresidentialPardonForm on " << target << " #####\n";
@@ -166,32 +167,18 @@ void	test_intern(std::string const & form_name, std::string const & target) {
 }
 
 void	test_officeblock_no_param(std::string const & form_name,
-									std::string const & target_name) {
+		std::string const & target_name) {
 	std::cout << "\n##### Testing OfficeBlock #####\n";
 	try {
 		OfficeBlock ob;
+		Bureaucrat 	alice("Alice", 1);
+		Bureaucrat 	bob("Bob", 1);
+		Intern		intern;
 
-		ob.setIntern(new Intern());
-		ob.setSigningBureaucrat(new Bureaucrat("Alice", 1));
-		ob.setExecutingBureaucrat(new Bureaucrat("Bob", 1));
+		ob.setIntern(intern);
+		ob.setSigner(alice);
+		ob.setExecutor(bob);
 		ob.doBureaucracy(form_name, target_name);
-	}
-	catch (const std::exception & exception) {
-		std::cout << "##### An exception occurred #####\n" <<
-			exception.what();
-	}
-}
-
-void	test_officeblock(Intern* intern,
-						Bureaucrat* signer,
-						Bureaucrat* executor,
-						std::string const & form_name,
-						std::string const & target_name) {
-	std::cout << "\n##### Testing OfficeBlock #####\n";
-	try {
-		OfficeBlock ob1(intern, signer, executor);
-
-		ob1.doBureaucracy(form_name, target_name);
 	}
 	catch (const std::exception & exception) {
 		std::cout << "##### An exception occurred #####\n" <<
@@ -234,9 +221,30 @@ int	main() {
 	test_officeblock_no_param("presidential pardon", "Hello");
 	test_officeblock_no_param("HTML form", "Hello");
 
-	test_officeblock(0, 0, 0, "presidential pardon", "Hello");
-	test_officeblock(new Intern(),
-			new Bureaucrat("Bob", 150),
-			new Bureaucrat("Alice", 1),
-			"robotomy request", "Hello");
+	std::cout << "\n";
+	{
+		Intern		idiotOne;
+		Bureaucrat	hermes = Bureaucrat("Hermes Conrad", 37);
+		Bureaucrat	bob = Bureaucrat("Bobby Bobson", 123);
+		OfficeBlock	ob;
+
+		ob.setIntern(idiotOne);
+		ob.setSigner(bob);
+		ob.setExecutor(hermes);
+
+		try
+		{
+			ob.doBureaucracy("mutant pig termination", "Pigley");
+		}
+		catch (const Form::NotSignedException & exception)
+		{
+			std::cout << "##### An exception occurred #####\n" <<
+				exception.what();
+		}
+		catch (const std::exception & exception)
+		{
+			std::cout << "##### An exception occurred #####\n" <<
+				exception.what();
+		}
+	}
 }
