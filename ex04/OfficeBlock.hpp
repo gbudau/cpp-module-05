@@ -9,26 +9,23 @@
 class OfficeBlock {
  public:
 	OfficeBlock();
-	OfficeBlock(Intern* intern, Bureaucrat* signing_bureaucrat,
-											Bureaucrat* executing_bureaucrat);
+	OfficeBlock(Intern const & intern, Bureaucrat const & signing_bureaucrat,
+										Bureaucrat const & executing_bureaucrat);
 	virtual ~OfficeBlock();
 	void	doBureaucracy(std::string const & form_name,
-											std::string const & target_name);
-	Intern*		getIntern() const;
-	Bureaucrat*	getSigningBureaucrat() const;
-	Bureaucrat*	getExecutingBureaucrat() const;
-	void		setIntern(Intern* intern);
-	void		setSigningBureaucrat(Bureaucrat* signing_bureaucrat);
-	void		setExecutingBureaucrat(Bureaucrat* executing_bureaucrat);
+										std::string const & target_name) const;
+	void		setIntern(Intern const & intern);
+	void		setSigner(Bureaucrat const & signing_bureaucrat);
+	void		setExecutor(Bureaucrat const & executing_bureaucrat);
 	class		FormNotFoundException;
 	class		BureaucracyCantBeDoneException;
 
  private:
 	OfficeBlock(OfficeBlock const & src);
 	OfficeBlock &	operator=(OfficeBlock const & rhs);
-	Intern*			_intern;
-	Bureaucrat*		_signing_bureaucrat;
-	Bureaucrat*		_executing_bureaucrat;
+	const Intern*			_intern;
+	const Bureaucrat*		_signing_bureaucrat;
+	const Bureaucrat*		_executing_bureaucrat;
 };
 
 class OfficeBlock::FormNotFoundException : virtual public std::logic_error {

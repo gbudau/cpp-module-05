@@ -47,8 +47,12 @@ void			Bureaucrat::decrementGrade() {
 
 void			Bureaucrat::signForm(Form & form) const {
 	try {
+		std::cout << "Bureaucrat " << getName() << " (Grade " << getGrade() <<
+			") signs a " << form.getName() << "(s.grade " <<
+			form.getSignGrade() << ", ex.grade " << form.getExecuteGrade() <<
+			")\n\t targeted on " << form.getTarget() << " (" <<
+			(form.getIsSigned() ? "Signed" : "Unsigned") << ")\n";
 		form.beSigned(*this);
-		std::cout << getName() << " signs form " << form.getName() << "\n";
 	}
 	catch (const std::exception & exception) {
 		std::cout << getName() << " cannot sign form " << form.getName() <<
@@ -58,8 +62,12 @@ void			Bureaucrat::signForm(Form & form) const {
 
 void			Bureaucrat::executeForm(Form const & form) const {
 	try {
+		std::cout << "Bureaucrat " << getName() << " (Grade " << getGrade() <<
+			") executes a " << form.getName() << "(s.grade " <<
+			form.getSignGrade() << ", ex.grade " << form.getExecuteGrade() <<
+			")\n\t targeted on " << form.getTarget() << " (" <<
+			(form.getIsSigned() ? "Signed" : "Unsigned") << ")\n";
 		form.execute(*this);
-		std::cout << getName() << " executes " << form.getName() << "\n";
 	}
 	catch (const std::exception & exception) {
 		std::cout << exception.what();

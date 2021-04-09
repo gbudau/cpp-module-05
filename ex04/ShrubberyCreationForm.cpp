@@ -1,7 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target)
-	: Form("ShrubberyCreationForm", 145, 137, target) {
+	: Form("Shrubbery Creation Form", 145, 137, target) {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src)
